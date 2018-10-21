@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+	<h1>Employee edit page</h1>
+	<form method="POST">
+
+		<table class="table table-bordered table-light">
+			{% csrf_token %}
+			{{ form.as_table }}
+		</table>
+		<button type="submit" class="btn btn-warning float-left">Update</button>
+	</form>
+{% endblock content %}

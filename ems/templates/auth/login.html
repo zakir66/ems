@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+    <head>
+        <title>Employee Management System</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <style>
+            .f{
+                margin-top: 205px;
+            }
+            body{
+                background-color: gray
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container col-md-4 f">
+        <form method="POST">
+	        {% csrf_token %}
+            <div class="form-group">
+                <label class="text-white text-uppercase font-weight-bold" for="exampleInputEmail1">User Name</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label class="text-white text-uppercase font-weight-bold" for="exampleInputPassword1">Password</label>
+                <input type="password" name = "password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <p style="color: red">{{ error }}</p>
+            <button type="submit" class="btn btn-light">LOGIN</button>
+</form>
+    </div>
+
+
+    </body>
+</html>

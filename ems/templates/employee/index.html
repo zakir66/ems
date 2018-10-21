@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+	<p>
+        <h3 class="float-left">list of  {{ title }}</h3>
+        {% if request.role == 'Admin' %}
+		<a class="btn btn-success float-right" href="/employee/add">Add employee</a>
+        {% endif %}
+	</p>
+	<div class="table-responsive-sm">
+		{% if users %}
+			<table class="table table-bordered">
+				<thead class="thead-light">
+                    <tr>
+                        <th>Name</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+				<tbody>
+				{% for u in users %}
+				<tr>
+                        <th scope="row">
+                            {{u.first_name}} {{u.last_name}}
+                            <span class="badge badge-default">{{u.email}}</span>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="{%  url 'employee_details' u.id %}">Details</a>
+                            <a class="btn btn-warning" href="{%  url 'employee_edit' u.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{%  url 'employee_delete' u.id %}">Delete</a>
+                        </td>
+                    </tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+            <p>There is no employee available.</p>
+        {% endif %}
+	</div>
+
+{% endblock content %}
